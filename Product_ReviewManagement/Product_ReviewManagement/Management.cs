@@ -8,6 +8,7 @@ namespace Product_ReviewManagement
 {
    public class Management
     {
+        DataTable dataTable = new DataTable();
         public static void Display(List<ProductDetails> list)
         {
             foreach (ProductDetails product in list)
@@ -65,6 +66,26 @@ namespace Product_ReviewManagement
             foreach (ProductDetails product in records)
             {
                 Console.WriteLine("ProductId : " + product.productId + " " + " UserId : " + product.userId + " " + " Rating : " + product.rating + " " + " Review : " + product.review + " " + " IsLike : " + product.isLike);
+            }
+        }
+
+        //Create DataTable using C# and Add ProductID, UserID, Rating, Review and isLike fields in that.
+        public void ProductReviewDataTable(List<ProductDetails> list)
+        {
+            dataTable.Columns.Add("ProductId").DataType = typeof(Int32);
+            dataTable.Columns.Add("UserId").DataType = typeof(Int32);
+            dataTable.Columns.Add("Rating").DataType = typeof(int);
+            dataTable.Columns.Add("Review");
+            dataTable.Columns.Add("IsLike").DataType = typeof(bool);
+            foreach (var item in list)
+            {
+                dataTable.Rows.Add(item.productId, item.userId, item.rating, item.review, item.isLike);
+            }
+            var productTable = from products in dataTable.AsEnumerable() select products;
+            foreach (DataRow product in productTable)
+            {
+                Console.WriteLine(product.Field<int>("ProductId") + " " + product.Field<int>("UserID") + " " +
+                  product.Field<int>("Rating") + " " + product.Field<string>("Review") + " " + product.Field<bool>("IsLike"));
             }
         }
     }
