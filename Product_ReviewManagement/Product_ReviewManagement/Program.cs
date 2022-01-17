@@ -41,7 +41,7 @@ namespace Product_ReviewManagement
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press:\n 1.Display Data\n 2.Retrive Data\n 3.Display Data Based on Product Id\n 4.Count Product Id\n 5.Retreive by ProductId and Review\n 6.Skip top 5 record\n 7.Data Table\n 8.Retrieve records from DataTable who's islike value TRUE\n 9.Average of Records\n 10.Retreive records from the list who’s review message contain 'nice'\n 11.Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press:\n 1.Display Data\n 2.Retrive Data\n 3.Display Data Based on Product Id\n 4.Count Product Id\n 5.Retreive by ProductId and Review\n 6.Skip top 5 record\n 7.Data Table\n 8.Retrieve records from DataTable who's islike value TRUE\n 9.Average of Records\n 10.Retreive records from the list who’s review message contain 'nice'\n 11.Retrive Data from UserID-'10'\n 12.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -78,6 +78,10 @@ namespace Product_ReviewManagement
                         Management.RetreiveProductIdAndReview(list, "nice");
                         break;
                     case 11:
+                        Management userID = new Management();
+                        userID.RetriveRecordsFromDataTableWhereUserId();
+                        break;
+                    case 12:
                         flag = false;
                         break;
                 }

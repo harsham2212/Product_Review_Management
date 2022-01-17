@@ -117,5 +117,18 @@ namespace Product_ReviewManagement
         {
             var recordData = from productReviews in review where productReviews.review.Contains(reviewMessage) select productReviews;
         }
+
+        //Add some 5 to 6 records for Userid=10 in the datatable
+        public void RetriveRecordsFromDataTableWhereUserId()
+        {
+            var productTable = from products in this.dataTable.AsEnumerable()
+                               where products.Field<int>("UserId") == 10
+                               select products;
+            foreach (DataRow product in productTable)
+            {
+                Console.WriteLine(product.Field<int>("ProductId") + " " + product.Field<int>("UserID") + " " +
+                  product.Field<int>("Rating") + " " + product.Field<string>("Review") + " " + product.Field<bool>("IsLike"));
+            }
+        }
     }
 }
