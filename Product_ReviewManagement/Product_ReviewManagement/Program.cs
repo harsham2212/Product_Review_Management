@@ -41,7 +41,7 @@ namespace Product_ReviewManagement
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press:\n 1.Display Data\n 2.Retrive Data\n 3.Display Data Based on Product Id\n 4.Count Product Id\n 5.Retreive by ProductId and Review\n 6.Skip top 5 record\n 7.Data Table\n 8.Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press:\n 1.Display Data\n 2.Retrive Data\n 3.Display Data Based on Product Id\n 4.Count Product Id\n 5.Retreive by ProductId and Review\n 6.Skip top 5 record\n 7.Data Table\n 8.Retrieve records from DataTable who's islike value TRUE\n 9.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -68,6 +68,10 @@ namespace Product_ReviewManagement
                         Operation.ProductReviewDataTable(list);
                         break;
                     case 8:
+                        Management retrive = new Management();
+                        retrive.RetriveRecordsFromDataTable();
+                        break;
+                    case 9:
                         flag = false;
                         break;
                 }
