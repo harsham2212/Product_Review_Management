@@ -41,7 +41,7 @@ namespace Product_ReviewManagement
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press:\n 1.Display Data\n 2.Retrive Data\n 3.Display Data Based on Product Id\n 4.Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press:\n 1.Display Data\n 2.Retrive Data\n 3.Display Data Based on Product Id\n 4.Count Product Id\n 5.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -55,6 +55,9 @@ namespace Product_ReviewManagement
                         Management.SelectRecordsBasedOnProductId(list);
                         break;
                     case 4:
+                        Management.CountingProductId(list);
+                        break;
+                    case 5:
                         flag = false;
                         break;
                 }
