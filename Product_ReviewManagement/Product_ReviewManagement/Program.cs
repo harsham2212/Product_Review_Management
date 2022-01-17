@@ -10,6 +10,7 @@ namespace Product_ReviewManagement
             Console.WriteLine("Welcome to Product Review Management Problems Statement! \n ");
             ProductDetails product = new ProductDetails();
             List<ProductDetails> list = new List<ProductDetails>()
+
             {
                 new ProductDetails(){productId=1, userId=1, rating=5, review="Good", isLike=true},
                 new ProductDetails(){productId=2, userId=2, rating=4, review="Good", isLike=true},
@@ -37,7 +38,24 @@ namespace Product_ReviewManagement
                 new ProductDetails(){productId=24, userId=24, rating=3, review="bad", isLike=true},
                 new ProductDetails(){productId=25, userId=25, rating=5, review="Good", isLike=true}
             };
-            Management.Display(list);
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press:\n 1.Display Data\n 2.Retrive Data\n 3.Exit");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Management.Display(list);
+                        break;
+                    case 2:
+                        Management.SelectTopRatingsRecords(list);
+                        break;
+                    case 3:
+                        flag = false;
+                        break;
+                }
+            }
         }
     }
 }
