@@ -112,10 +112,10 @@ namespace Product_ReviewManagement
             }
         }
 
-        //Retreive all records from the list who’s review message contain “nice”
-        public static void RetreiveProductIdAndReview(List<ProductDetails> review, string reviewMassage)
+        //Retreive all records from the list who’s review message contain “nice”.
+        public static void RetreiveProductIdAndReview(List<ProductDetails> review, string reviewMessage)
         {
-            var recordData = from productReviews in review where productReviews.review.Contains(reviewMassage) select productReviews;
+            var recordData = from productReviews in review where productReviews.review.Contains(reviewMessage) select productReviews;
         }
     }
 }
