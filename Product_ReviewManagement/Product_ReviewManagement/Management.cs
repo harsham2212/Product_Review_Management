@@ -101,5 +101,14 @@ namespace Product_ReviewManagement
                   product.Field<int>("Rating") + " " + product.Field<string>("Review") + " " + product.Field<bool>("IsLike"));
             }
         }
+
+        public static void AveragePerProductId(List<ProductDetails> review)
+        {
+            var recordData = review.GroupBy(x => x.productId).Select(x => new { productId = x.Key, AverageRating = x.Average(x => x.rating) });
+            foreach (var list in recordData)
+            {
+                Console.WriteLine(list.productId + "-" + list.AverageRating);
+            }
+        }
     }
 }
