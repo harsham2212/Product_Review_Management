@@ -16,6 +16,7 @@ namespace Product_ReviewManagement
                     + " " + "Review:" + product.review + " " + "isLike:" + product.isLike);
             }
         }
+
         // Retriving Top 3 data
         public static void SelectTopRatingsRecords(List<ProductDetails> list)
         {
@@ -23,6 +24,16 @@ namespace Product_ReviewManagement
             foreach (ProductDetails product in records)
             {
                 Console.WriteLine("ProductId : " + product.productId + " UserId : " + product.userId + " Rating : " + product.rating + " Review : " + product.review + " IsLike : " + product.isLike);
+            }
+        }
+
+        // Management - Retrieve all record from the list who’s rating are greater then 3 and productID is 1 or 4 or 9 using LINQ
+        public static void SelectRecordsBasedOnProductId(List<ProductDetails> list)
+        {
+            var records = (list.Where(r => r.rating > 3 && (r.productId == 1 || r.productId == 4 || r.productId == 9))).ToList();
+            foreach (ProductDetails product in records)
+            {
+                Console.WriteLine("ProductId : " + product.productId + " " + " UserId : " + product.userId + " " + " Rating : " + product.rating + " " + " Review : " + product.review + " " + " IsLike : " + product.isLike);
             }
         }
     }
