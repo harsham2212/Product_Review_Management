@@ -28,7 +28,7 @@ namespace Product_ReviewManagement
             }
         }
 
-        // Management - Retrieve all record from the list who’s rating are greater then 3 and productID is 1 or 4 or 9 using LINQ
+        // Retrieve all record from the list who’s rating are greater then 3 and productID is 1 or 4 or 9 using LINQ
         public static void SelectRecordsBasedOnProductId(List<ProductDetails> list)
         {
             var records = (list.Where(r => r.rating > 3 && (r.productId == 1 || r.productId == 4 || r.productId == 9))).ToList();
@@ -49,7 +49,7 @@ namespace Product_ReviewManagement
         }
         
 
-        //Management - Retrieve only productId and review from the list for all records
+        // Retrieve only productId and review from the list for all records
         public static void RetriveProductIdAndReviw(List<ProductDetails> list)
         {
             var record = list.Select(product => new { ProductId = product.productId, Review = product.review }).ToList();
@@ -102,6 +102,7 @@ namespace Product_ReviewManagement
             }
         }
 
+        //Find average rating of the each productId using LINQ
         public static void AveragePerProductId(List<ProductDetails> review)
         {
             var recordData = review.GroupBy(x => x.productId).Select(x => new { productId = x.Key, AverageRating = x.Average(x => x.rating) });
@@ -109,6 +110,12 @@ namespace Product_ReviewManagement
             {
                 Console.WriteLine(list.productId + "-" + list.AverageRating);
             }
+        }
+
+        //Retreive all records from the list who’s review message contain “nice”
+        public static void RetreiveProductIdAndReview(List<ProductDetails> review, string reviewMassage)
+        {
+            var recordData = from productReviews in review where productReviews.review.Contains(reviewMassage) select productReviews;
         }
     }
 }
