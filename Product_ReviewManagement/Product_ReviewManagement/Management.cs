@@ -46,5 +46,15 @@ namespace Product_ReviewManagement
                 Console.WriteLine("ProductId : " + item.productId + " " + "Count:" + item.count);
             }
         }
+
+        //Management - Retrieve only productId and review from the list for all records
+        public static void RetriveProductIdAndReviw(List<ProductDetails> list)
+        {
+            var record = list.Select(product => new { ProductId = product.productId, Review = product.review }).ToList();
+            foreach (var item in record)
+            {
+                Console.WriteLine("ProductId : " + item.ProductId + " " + "Review:" + item.Review);
+            }
+        }
     }
 }
